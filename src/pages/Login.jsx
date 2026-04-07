@@ -44,7 +44,7 @@ const Login = () => {
       <Card className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold bg-gradient-accent bg-clip-text text-transparent mb-2">
-            ASPA
+            ASPS
           </h1>
           <p className="text-gray-400">De-risking Construction Planning</p>
         </div>
