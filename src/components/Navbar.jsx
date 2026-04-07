@@ -1,11 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { getCurrentUser } from '../utils/auth';
 
-const Navbar = ({ onMenuClick }) => {
+interface NavbarProps {
+  onMenuClick: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
   const user = getCurrentUser();
 
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    if (window.scrollY > lastScrollY) {
+      // Scrolling down → hide navbar
+      setShow(false);
+    } else {
+      // Scrolling up → show navbar
+      setShow(true);
+    }
+    setLastScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlNavbar);
+    return () => window.removeEventListener('scroll', controlNavbar);
+  }, [lastScrollY]);
+
   return (
-    <nav className="fixed top-0 w-full z-50">
+    <nav
+      className={`fixed top-0 w-full z-50 transition-transform transition-opacity duration-500 ${
+        show ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+      }`}
+    >
       <div className="card m-4 flex justify-between items-center px-6 py-4">
         <div className="flex items-center gap-4">
           <button
@@ -18,7 +45,7 @@ const Navbar = ({ onMenuClick }) => {
             AquaSecure Planning System
           </h1>
         </div>
-        
+
         <div className="flex items-center gap-4">
           <span className="text-gray-300 text-sm hidden sm:block">{user?.name}</span>
           <button
