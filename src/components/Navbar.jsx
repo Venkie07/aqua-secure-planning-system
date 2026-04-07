@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { getCurrentUser } from '../utils/auth';
 
-interface NavbarProps {
-  onMenuClick: () => void;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
+const Navbar = ({ onMenuClick }) => {
   const user = getCurrentUser();
-
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const controlNavbar = () => {
     if (window.scrollY > lastScrollY) {
-      // Scrolling down → hide navbar
+      // scrolling down
       setShow(false);
     } else {
-      // Scrolling up → show navbar
+      // scrolling up
       setShow(true);
     }
     setLastScrollY(window.scrollY);
