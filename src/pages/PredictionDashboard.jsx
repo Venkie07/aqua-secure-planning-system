@@ -4,10 +4,10 @@ import {
   LineChart, Line, AreaChart, Area,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
-import Navbar from '../components/Navbar';
-import Sidebar from '../components/Sidebar';
-import Button from '../components/Button';
-import Card from '../components/Card';
+import Navbar from '../components/common/Navbar';
+import Sidebar from '../components/common/Sidebar';
+import Button from '../components/common/Button';
+import Card from '../components/common/Card';
 import { getRiskDataByProjectId } from '../utils/auth';
 
 const PredictionDashboard = () => {
@@ -23,9 +23,9 @@ const PredictionDashboard = () => {
 
   if (!riskData) {
     return (
-      <div className="min-h-screen bg-gradient-dark flex items-center justify-center">
+      <div className="min-h-screen   flex items-center justify-center">
         <Card>
-          <p className="text-gray-400 mb-4">No risk data available. Using default PROJ001 data.</p>
+          <p className="text-slate-500 mb-4">No risk data available. Using default PROJ001 data.</p>
           <Button onClick={() => navigate('/dashboard')}>Back to Dashboard</Button>
         </Card>
       </div>
@@ -61,38 +61,39 @@ const PredictionDashboard = () => {
   const selectedSummary = parameterMap[selectedParameter];
 
   return (
-    <div className="min-h-screen bg-gradient-dark">
+    <div className="min-h-screen  ">
       <Navbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <div className="pt-24 px-4 pb-8">
+      <div className="pt-20 sm:pt-24 px-4 sm:px-6 md:px-10 lg:px-20 pb-8 sm:pb-12">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="flex justify-between items-start mb-8">
+          <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6 sm:mb-8">
             <div>
-              <h2 className="text-3xl font-bold text-white mb-2">Risk Analysis Report</h2>
-              <p className="text-gray-400">Project: {projectId}</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-2">Risk Analysis Report</h2>
+              <p className="text-xs sm:text-sm text-slate-500">Project: {projectId}</p>
             </div>
             <Button
               variant="secondary"
               onClick={() => navigate('/dashboard')}
+              className="text-sm sm:text-base"
             >
               Back
             </Button>
           </div>
 
           {/* Feasibility Card */}
-          <Card className={`mb-6 border-2 ${isFeasible ? 'border-green-500 border-opacity-50' : 'border-red-500 border-opacity-50'}`}>
-            <div className="flex items-center justify-between">
+          <Card className={`mb-6 sm:mb-8 border-2 ${isFeasible ? 'border-green-500 border-opacity-50' : 'border-red-500 border-opacity-50'}`}>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
-                <h3 className="text-sm text-gray-400 mb-2">Feasibility Status</h3>
-                <p className={`text-3xl font-bold ${isFeasible ? 'text-green-400' : 'text-red-400'}`}>
+                <h3 className="text-xs sm:text-sm text-slate-500 mb-2">Feasibility Status</h3>
+                <p className={`text-2xl sm:text-3xl font-bold ${isFeasible ? 'text-green-500' : 'text-red-500'}`}>
                   {isFeasible ? '✓ FEASIBLE' : '✗ NOT FEASIBLE'}
                 </p>
               </div>
-              <div className="text-right">
-                <h3 className="text-sm text-gray-400 mb-2">Risk Score</h3>
-                <div className={`text-4xl font-bold ${riskData.riskScore < 50 ? 'text-green-400' : riskData.riskScore < 70 ? 'text-yellow-400' : 'text-red-400'}`}>
+              <div className="text-left sm:text-right">
+                <h3 className="text-xs sm:text-sm text-slate-500 mb-2">Risk Score</h3>
+                <div className={`text-2xl sm:text-3xl md:text-4xl font-bold ${riskData.riskScore < 50 ? 'text-green-500' : riskData.riskScore < 70 ? 'text-yellow-500' : 'text-red-500'}`}>
                   {riskData.riskScore}/100
                 </div>
               </div>
@@ -100,10 +101,10 @@ const PredictionDashboard = () => {
           </Card>
 
           {/* Filters */}
-          <Card className="mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Card className="mb-6 sm:mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-xs sm:text-sm font-medium text-slate-600 mb-2">
                   Select Year
                 </label>
                 <select
@@ -118,7 +119,7 @@ const PredictionDashboard = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">
+                <label className="block text-xs sm:text-sm font-medium text-slate-600 mb-2">
                   Select Parameter
                 </label>
                 <select
@@ -134,22 +135,22 @@ const PredictionDashboard = () => {
             </div>
           </Card>
 
-          <Card className="mb-6">
-            <p className="text-sm text-blue-200/80 mb-1">Selected Parameter</p>
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-2">
+          <Card className="mb-6 sm:mb-8">
+            <p className="text-xs sm:text-sm text-blue-700 mb-2 sm:mb-3">Selected Parameter</p>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 sm:gap-4">
               <div>
-                <h3 className="text-xl font-bold text-white">{selectedSummary.title}</h3>
-                <p className="text-sm text-blue-100/80">{selectedSummary.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900">{selectedSummary.title}</h3>
+                <p className="text-xs sm:text-sm text-slate-600 mt-1">{selectedSummary.description}</p>
               </div>
-              <p className={`text-3xl font-bold ${selectedSummary.tone}`}>{selectedSummary.value}</p>
+              <p className={`text-2xl sm:text-3xl font-bold ${selectedSummary.tone}`}>{selectedSummary.value}</p>
             </div>
           </Card>
 
           {/* Charts Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-6 sm:mb-8">
             {/* Rainfall Trend */}
             <Card>
-              <h3 className="text-lg font-bold text-white mb-4">📈 Rainfall Trend</h3>
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-4">📈 Rainfall Trend</h3>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={rainfallData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
@@ -177,7 +178,7 @@ const PredictionDashboard = () => {
 
             {/* Groundwater Level */}
             <Card>
-              <h3 className="text-lg font-bold text-white mb-4">💧 Groundwater Level</h3>
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-4">💧 Groundwater Level</h3>
               <ResponsiveContainer width="100%" height={300}>
                 <LineChart data={groundwaterData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
@@ -205,8 +206,8 @@ const PredictionDashboard = () => {
           </div>
 
           {/* Flood Risk Chart */}
-          <Card className="mb-6">
-            <h3 className="text-lg font-bold text-white mb-4">🌊 Flood Risk Index</h3>
+          <Card className="mb-6 sm:mb-8">
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-4">🌊 Flood Risk Index</h3>
             <ResponsiveContainer width="100%" height={300}>
               <AreaChart data={floodRiskData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
@@ -233,16 +234,16 @@ const PredictionDashboard = () => {
           </Card>
 
           {/* Risk Factor Panel */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mb-6 sm:mb-8">
             <Card>
-              <h4 className="text-sm text-gray-400 mb-2">🌧️ Rainfall Variability</h4>
+              <h4 className="text-sm text-slate-500 mb-2">🌧️ Rainfall Variability</h4>
               <div className="flex items-end gap-2">
                 <span className="text-3xl font-bold text-cyan-400">
                   {riskData.factors.rainfallVariability}
                 </span>
-                <span className="text-gray-400">/100</span>
+                <span className="text-slate-500">/100</span>
               </div>
-              <div className="mt-3 bg-dark-700 rounded-full h-2 overflow-hidden">
+              <div className="mt-3 bg-slate-100 rounded-full h-2 overflow-hidden">
                 <div
                   className="h-full bg-gradient-accent"
                   style={{ width: `${riskData.factors.rainfallVariability}%` }}
@@ -251,14 +252,14 @@ const PredictionDashboard = () => {
             </Card>
 
             <Card>
-              <h4 className="text-sm text-gray-400 mb-2">🌊 Flood Risk</h4>
+              <h4 className="text-sm text-slate-500 mb-2">🌊 Flood Risk</h4>
               <div className="flex items-end gap-2">
                 <span className="text-3xl font-bold text-orange-400">
                   {riskData.factors.floodRisk}
                 </span>
-                <span className="text-gray-400">/100</span>
+                <span className="text-slate-500">/100</span>
               </div>
-              <div className="mt-3 bg-dark-700 rounded-full h-2 overflow-hidden">
+              <div className="mt-3 bg-slate-100 rounded-full h-2 overflow-hidden">
                 <div
                   className="h-full bg-orange-500"
                   style={{ width: `${riskData.factors.floodRisk}%` }}
@@ -267,14 +268,14 @@ const PredictionDashboard = () => {
             </Card>
 
             <Card>
-              <h4 className="text-sm text-gray-400 mb-2">💧 Groundwater Depletion</h4>
+              <h4 className="text-sm text-slate-500 mb-2">💧 Groundwater Depletion</h4>
               <div className="flex items-end gap-2">
                 <span className="text-3xl font-bold text-yellow-400">
                   {riskData.factors.groundwaterDepletion}
                 </span>
-                <span className="text-gray-400">/100</span>
+                <span className="text-slate-500">/100</span>
               </div>
-              <div className="mt-3 bg-dark-700 rounded-full h-2 overflow-hidden">
+              <div className="mt-3 bg-slate-100 rounded-full h-2 overflow-hidden">
                 <div
                   className="h-full bg-yellow-500"
                   style={{ width: `${riskData.factors.groundwaterDepletion}%` }}
@@ -284,24 +285,24 @@ const PredictionDashboard = () => {
           </div>
 
           {/* Analysis Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-6 sm:mb-8">
             {/* Explanation */}
             <Card>
-              <h3 className="text-lg font-bold text-white mb-4">📝 Analysis</h3>
-              <p className="text-gray-300 leading-relaxed mb-4">
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-4">📝 Analysis</h3>
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">
                 {riskData.explanation}
               </p>
-              <p className="text-sm text-blue-100/75">
+              <p className="text-xs sm:text-sm text-slate-600">
                 Projection year considered: {selectedYear}
               </p>
             </Card>
 
             {/* Recommendations */}
             <Card>
-              <h3 className="text-lg font-bold text-white mb-4">💡 Recommendations</h3>
+              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-4">💡 Recommendations</h3>
               <ul className="space-y-2">
                 {riskData.recommendations.map((rec, idx) => (
-                  <li key={idx} className="flex gap-2 text-gray-300 text-sm">
+                  <li key={idx} className="flex gap-2 text-slate-600 text-sm">
                     <span className="text-primary-400 font-bold">•</span>
                     <span>{rec}</span>
                   </li>
@@ -312,21 +313,21 @@ const PredictionDashboard = () => {
 
           {/* Alternative Locations */}
           <Card>
-            <h3 className="text-lg font-bold text-white mb-4">🗺️ Alternative Locations</h3>
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-4">🗺️ Alternative Locations</h3>
             <div className="space-y-3">
               {riskData.alternativeLocations.map((location, idx) => (
-                <div key={idx} className="p-3 bg-dark-700 rounded-lg border border-dark-600 hover:border-primary-500 transition-colors">
+                <div key={idx} className="p-3 bg-slate-100 rounded-lg border border-slate-200 hover:border-primary-500 transition-colors">
                   <div className="flex justify-between items-start mb-2">
-                    <h4 className="font-semibold text-white">{location.name}</h4>
+                    <h4 className="font-semibold text-slate-900">{location.name}</h4>
                     <span className={`text-xs px-2 py-1 rounded ${location.feasibility === 'Feasible' ? 'bg-green-500 bg-opacity-20 text-green-400' : 'bg-red-500 bg-opacity-20 text-red-400'}`}>
                       {location.feasibility}
                     </span>
                   </div>
-                  <p className="text-sm text-gray-400 mb-2">
+                  <p className="text-sm text-slate-500 mb-2">
                     {location.latitude.toFixed(4)}, {location.longitude.toFixed(4)}
                   </p>
                   <div className="flex gap-4">
-                    <span className="text-xs text-gray-500">Risk Score: <span className="text-white font-semibold">{location.riskScore}</span></span>
+                    <span className="text-xs text-slate-500">Risk Score: <span className="text-slate-900 font-semibold">{location.riskScore}</span></span>
                   </div>
                 </div>
               ))}
@@ -334,13 +335,13 @@ const PredictionDashboard = () => {
           </Card>
 
           {/* Export Button */}
-          <div className="mt-8 flex gap-4">
-            <Button variant="primary" className="flex-1">
+          <div className="mt-8 sm:mt-10 md:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <Button variant="primary" className="flex-1 text-sm sm:text-base">
               Download Report
             </Button>
             <Button
               variant="secondary"
-              className="flex-1"
+              className="flex-1 text-sm sm:text-base"
               onClick={() => navigate('/dashboard')}
             >
               Back to Dashboard

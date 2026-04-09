@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { validateLogin, setCurrentUser } from '../utils/auth';
-import Button from '../components/Button';
-import Card from '../components/Card';
-import Input from '../components/Input';
+import Button from '../components/common/Button';
+import Card from '../components/common/Card';
+import Input from '../components/common/Input';
 
 const Login = () => {
   const [email, setEmail] = useState('admin@water.com');
@@ -40,13 +40,13 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-dark flex items-center justify-center p-4">
+    <div className="min-h-screen   flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-accent bg-clip-text text-transparent mb-2">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-700 to-cyan-600 bg-clip-text text-transparent mb-2">
             ASPS
           </h1>
-          <p className="text-gray-400">De-risking Construction Planning</p>
+          <p className="text-slate-600">De-risking Construction Planning</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -84,14 +84,14 @@ const Login = () => {
           </Button>
         </form>
 
-        <p className="text-center text-gray-400 mt-6 text-sm">
+        <p className="text-center text-slate-600 mt-6 text-sm">
           Don't have an account?{' '}
-          <Link to="/signup" className="text-primary-400 hover:text-primary-300">
+          <Link to="/signup" className="text-blue-700 hover:text-blue-600">
             Sign up
           </Link>
         </p>
 
-        <div className="mt-6 p-3 bg-blue-500 bg-opacity-10 border border-blue-500 border-opacity-30 rounded-lg text-xs text-gray-300">
+        <div className="mt-6 p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-slate-600">
           <p className="font-semibold mb-2">Demo Credentials:</p>
           <p>Email: admin@water.com</p>
           <p>Password: password123</p>

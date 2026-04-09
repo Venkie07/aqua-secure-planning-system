@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { setCurrentUser } from '../utils/auth';
 import { emailExists } from '../utils/auth';
-import Button from '../components/Button';
-import Card from '../components/Card';
-import Input from '../components/Input';
+import Button from '../components/common/Button';
+import Card from '../components/common/Card';
+import Input from '../components/common/Input';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -66,13 +66,13 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-dark flex items-center justify-center p-4">
+    <div className="min-h-screen   flex items-center justify-center p-4">
       <Card className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-accent bg-clip-text text-transparent mb-2">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-700 to-cyan-600 bg-clip-text text-transparent mb-2">
             Water AI
           </h1>
-          <p className="text-gray-400">Create your account</p>
+          <p className="text-slate-600">Create your account</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -142,9 +142,9 @@ const Signup = () => {
           </Button>
         </form>
 
-        <p className="text-center text-gray-400 mt-6 text-sm">
+        <p className="text-center text-slate-600 mt-6 text-sm">
           Already have an account?{' '}
-          <Link to="/login" className="text-primary-400 hover:text-primary-300">
+          <Link to="/login" className="text-blue-700 hover:text-blue-600">
             Login
           </Link>
         </p>

@@ -1,5 +1,37 @@
 import data from '../data.json';
 
+const TEMP_AUTH_KEY = 'tempAuthenticated';
+const TEMP_AUTH_DEFAULT = false; // Equivalent temporary baseline: const isAuthenticated = false;
+
+// TODO: Replace this with real backend authentication (JWT / API)
+const readTempAuthStatus = () => {
+  if (typeof window === 'undefined') {
+    return TEMP_AUTH_DEFAULT;
+  }
+
+  const stored = localStorage.getItem(TEMP_AUTH_KEY);
+  if (stored === null) {
+    localStorage.setItem(TEMP_AUTH_KEY, JSON.stringify(TEMP_AUTH_DEFAULT));
+    return TEMP_AUTH_DEFAULT;
+  }
+
+  try {
+    return JSON.parse(stored) === true;
+  } catch {
+    return TEMP_AUTH_DEFAULT;
+  }
+};
+
+// TODO: Replace this with real backend authentication (JWT / API)
+export const setAuthStatus = (isLoggedIn) => {
+  if (typeof window === 'undefined') {
+    return;
+  }
+  localStorage.setItem(TEMP_AUTH_KEY, JSON.stringify(Boolean(isLoggedIn)));
+};
+
+export const getAuthStatus = () => readTempAuthStatus();
+
 // Auth utilities
 export const validateLogin = (email, password) => {
   const user = data.users.find(u => u.email === email && u.password === password);
@@ -49,6 +81,7 @@ export const getUserProjects = () => {
 
 export const setCurrentUser = (user) => {
   localStorage.setItem('currentUser', JSON.stringify(user));
+  setAuthStatus(true);
 };
 
 export const getCurrentUser = () => {
@@ -57,8 +90,9 @@ export const getCurrentUser = () => {
 
 export const logout = () => {
   localStorage.removeItem('currentUser');
+  setAuthStatus(false);
 };
 
 export const isAuthenticated = () => {
-  return !!getCurrentUser();
+  return getAuthStatus();
 };

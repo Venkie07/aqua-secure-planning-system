@@ -6,9 +6,24 @@
 
 @layer base {
   :root {
+    /* Modern corporate theme variables (Tata IQ-inspired) */
+    --lp-bg-page: #6c8efd;
+    --lp-bg-section: #ffffff;
+    --lp-text-primary: #0f172a;
+    --lp-text-secondary: #334155;
+    --lp-text-muted: #64748b;
+    --lp-border-soft: #e2e8f0;
+    --lp-accent: #1d4ed8;
+    --lp-accent-dark: #1e40af;
+    --lp-accent-cyan: #0ea5e9;
+    --lp-accent-green: #22c55e;
+    --lp-shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.08);
+    --lp-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+    --lp-card-bg: #ffffff;
+
     font-family: 'Space Grotesk', sans-serif;
-    color: #e2ebff;
-    background: #040b1e;
+    color: var(--lp-text-primary);
+    background: var(--lp-bg-page);
   }
 
   * {
@@ -18,29 +33,70 @@
   body {
     margin: 0;
     min-height: 100vh;
-    background: linear-gradient(140deg, #020816 0%, #0a1f52 38%, #071638 70%, #040d24 100%);
-    color: #d7e6ff;
+    background: var(--lp-bg-page);
+    color: var(--lp-text-primary);
+    scroll-behavior: smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   #root {
     min-height: 100vh;
   }
-}
 
 @layer components {
   .card {
-    @apply rounded-xl border border-blue-300/15 bg-blue-950/35 p-6 shadow-2xl backdrop-blur-xl;
+    @apply rounded-lg border p-5 sm:p-6 transition-all duration-300;
+    border-color: var(--lp-border-soft);
+    background: var(--lp-card-bg);
+    box-shadow: var(--lp-shadow-md);
+  }
+
+  .card:hover {
+    box-shadow: var(--lp-shadow-soft);
   }
 
   .btn-primary {
-    @apply rounded-xl border border-blue-300/30 bg-gradient-to-r from-blue-500 to-cyan-400 px-6 py-2.5 font-semibold text-white shadow-lg shadow-blue-900/40 transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110;
+    @apply rounded-lg border px-5 sm:px-6 py-2.5 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0;
+    border-color: transparent;
+    background: linear-gradient(120deg, #0ea5e9 0%, #1d4ed8 100%);
+    box-shadow: 0 8px 16px rgba(14, 165, 233, 0.25);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 12px 24px rgba(14, 165, 233, 0.3);
   }
 
   .btn-secondary {
-    @apply rounded-xl border border-blue-200/20 bg-blue-950/40 px-6 py-2.5 font-semibold text-blue-100 transition-all duration-300 hover:bg-blue-900/60;
+    @apply rounded-lg border px-5 sm:px-6 py-2.5 font-semibold transition-all duration-300;
+    border-color: var(--lp-border-soft);
+    background: #ffffff;
+    color: var(--lp-text-secondary);
+  }
+
+  .btn-secondary:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
   }
 
   .input-field {
-    @apply w-full rounded-xl border border-blue-200/20 bg-blue-950/50 px-4 py-2.5 text-blue-50 outline-none transition-all duration-300 placeholder:text-blue-200/45 focus:border-cyan-300 focus:ring-2 focus:ring-cyan-400/30;
+    @apply w-full rounded-lg border px-4 py-2.5 outline-none transition-all duration-300 focus:ring-2 text-sm sm:text-base;
+    border-color: var(--lp-border-soft);
+    background: #ffffff;
+    color: var(--lp-text-primary);
   }
+
+  .input-field::placeholder {
+    color: #cbd5e1;
+  }
+
+  .input-field:focus {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+  }
+
+
+}
 }

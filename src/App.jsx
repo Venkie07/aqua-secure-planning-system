@@ -2,10 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Dashboard from './pages/Dashboard';
+import Dashboard from './pages/Dashboard/Dashboard';
 import NewProject from './pages/NewProject';
 import ExistingProject from './pages/ExistingProject';
 import PredictionDashboard from './pages/PredictionDashboard';
+import LandingPage from './pages/LandingPage/LandingPage';
 import { isAuthenticated } from './utils/auth';
 
 // Protected Route Component
@@ -16,13 +17,35 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
+const PublicOnlyRoute = ({ children }) => {
+  if (isAuthenticated()) {
+    return <Navigate to="/dashboard" replace />;
+  }
+  return children;
+};
+
 function App() {
   return (
     <Router>
       <Routes>
         {/* Public Routes */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route
+          path="/login"
+          element={(
+            <PublicOnlyRoute>
+              <Login />
+            </PublicOnlyRoute>
+          )}
+        />
+        <Route
+          path="/signup"
+          element={(
+            <PublicOnlyRoute>
+              <Signup />
+            </PublicOnlyRoute>
+          )}
+        />
 
         {/* Protected Routes */}
         <Route
@@ -55,18 +78,6 @@ function App() {
             <ProtectedRoute>
               <PredictionDashboard />
             </ProtectedRoute>
-          }
-        />
-
-        {/* Redirect root to login or dashboard */}
-        <Route
-          path="/"
-          element={
-            isAuthenticated() ? (
-              <Navigate to="/dashboard" replace />
-            ) : (
-              <Navigate to="/login" replace />
-            )
           }
         />
 

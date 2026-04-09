@@ -1,0 +1,296 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@water.com",
+      "password": "password123",
+      "name": "Admin User",
+      "company": "Water Corp"
+    },
+    {
+      "id": 2,
+      "email": "user@water.com",
+      "password": "user123",
+      "name": "John Developer",
+      "company": "Tech Solutions"
+    },
+    {
+      "id": 3,
+      "email": "planner@hydrolink.com",
+      "password": "hydro456",
+      "name": "Aisha Planner",
+      "company": "Hydrolink Infra"
+    }
+  ],
+  "projects": [
+    {
+      "id": "PROJ001",
+      "companyId": "COMP001",
+      "companyName": "TechWaterCorp",
+      "location": "New Delhi",
+      "type": "Manufacturing",
+      "latitude": 28.6139,
+      "longitude": 77.209,
+      "waterRequirement": 1500,
+      "areaNeeded": 50,
+      "constructionType": "Industrial",
+      "createdDate": "2025-01-15",
+      "status": "Active"
+    },
+    {
+      "id": "PROJ002",
+      "companyId": "COMP002",
+      "companyName": "AgriFresh Industries",
+      "location": "Mumbai",
+      "type": "Agriculture",
+      "latitude": 19.0760,
+      "longitude": 72.8777,
+      "waterRequirement": 2500,
+      "areaNeeded": 100,
+      "constructionType": "Farm",
+      "createdDate": "2025-02-20",
+      "status": "Active"
+    },
+    {
+      "id": "PROJ003",
+      "companyId": "COMP003",
+      "companyName": "EcoHydro Ltd",
+      "location": "Chennai",
+      "type": "Water Treatment",
+      "latitude": 13.0827,
+      "longitude": 80.2707,
+      "waterRequirement": 3000,
+      "areaNeeded": 75,
+      "constructionType": "Facility",
+      "createdDate": "2025-03-10",
+      "status": "Planning"
+    }
+  ],
+  "riskData": {
+    "PROJ001": {
+      "feasibility": "Feasible",
+      "riskScore": 35,
+      "factors": {
+        "rainfallVariability": 42,
+        "floodRisk": 28,
+        "groundwaterDepletion": 35
+      },
+      "rainfallTrend": [
+        { "year": 2025, "rainfall": 650 },
+        { "year": 2030, "rainfall": 720 },
+        { "year": 2040, "rainfall": 745 },
+        { "year": 2050, "rainfall": 760 }
+      ],
+      "groundwaterLevel": [
+        { "year": 2025, "depth": 15 },
+        { "year": 2030, "depth": 25 },
+        { "year": 2040, "depth": 28 },
+        { "year": 2050, "depth": 30 }
+      ],
+      "floodRiskIndex": [
+        { "year": 2025, "risk": 18, "severity": "Low" },
+        { "year": 2030, "risk": 32, "severity": "Medium" },
+        { "year": 2040, "risk": 38, "severity": "Medium" },
+        { "year": 2050, "risk": 44, "severity": "Medium" }
+      ],
+      "explanation": "The location shows moderate water availability with reasonable rainfall patterns. Groundwater depletion is a concern but manageable with proper water conservation measures. Flood risk is within acceptable limits.",
+      "recommendations": [
+        "Implement water harvesting system to capture seasonal rainfall",
+        "Install energy-efficient water recycling facility",
+        "Build artificial recharge ponds for groundwater replenishment",
+        "Consider alternative location at (28.65, 77.25) for better water availability"
+      ],
+      "alternativeLocations": [
+        {
+          "name": "North Delhi Site",
+          "latitude": 28.7500,
+          "longitude": 77.1200,
+          "riskScore": 28,
+          "feasibility": "Feasible"
+        },
+        {
+          "name": "Eastern Site",
+          "latitude": 28.5900,
+          "longitude": 77.3500,
+          "riskScore": 42,
+          "feasibility": "Feasible"
+        }
+      ]
+    },
+    "PROJ002": {
+      "feasibility": "Not Feasible",
+      "riskScore": 72,
+      "factors": {
+        "rainfallVariability": 68,
+        "floodRisk": 85,
+        "groundwaterDepletion": 60
+      },
+      "rainfallTrend": [
+        { "year": 2025, "rainfall": 520 },
+        { "year": 2030, "rainfall": 380 },
+        { "year": 2040, "rainfall": 345 },
+        { "year": 2050, "rainfall": 300 }
+      ],
+      "groundwaterLevel": [
+        { "year": 2025, "depth": 45 },
+        { "year": 2030, "depth": 95 },
+        { "year": 2040, "depth": 112 },
+        { "year": 2050, "depth": 126 }
+      ],
+      "floodRiskIndex": [
+        { "year": 2025, "risk": 72, "severity": "High" },
+        { "year": 2030, "risk": 90, "severity": "Very High" },
+        { "year": 2040, "risk": 93, "severity": "Very High" },
+        { "year": 2050, "risk": 96, "severity": "Extreme" }
+      ],
+      "explanation": "HIGH RISK LOCATION: Severe declining rainfall, critical groundwater depletion, and extremely high flood risk make this location unsuitable. Current groundwater depth is alarming and will worsen significantly.",
+      "recommendations": [
+        "AVOID THIS LOCATION - Consider alternative regions",
+        "If proceeding, must invest heavily in water infrastructure",
+        "Require government approval and community consultation",
+        "Implement comprehensive flood defense system",
+        "Explore locations in Western region with better water resources"
+      ],
+      "alternativeLocations": [
+        {
+          "name": "Western Maharashtra Site",
+          "latitude": 18.5204,
+          "longitude": 73.8567,
+          "riskScore": 32,
+          "feasibility": "Feasible"
+        },
+        {
+          "name": "Central India Site",
+          "latitude": 22.5726,
+          "longitude": 75.8311,
+          "riskScore": 38,
+          "feasibility": "Feasible"
+        }
+      ]
+    },
+    "PROJ003": {
+      "feasibility": "Feasible",
+      "riskScore": 45,
+      "factors": {
+        "rainfallVariability": 48,
+        "floodRisk": 35,
+        "groundwaterDepletion": 50
+      },
+      "rainfallTrend": [
+        { "year": 2025, "rainfall": 580 },
+        { "year": 2030, "rainfall": 670 },
+        { "year": 2040, "rainfall": 690 },
+        { "year": 2050, "rainfall": 705 }
+      ],
+      "groundwaterLevel": [
+        { "year": 2025, "depth": 25 },
+        { "year": 2030, "depth": 42 },
+        { "year": 2040, "depth": 47 },
+        { "year": 2050, "depth": 52 }
+      ],
+      "floodRiskIndex": [
+        { "year": 2025, "risk": 28, "severity": "Low" },
+        { "year": 2030, "risk": 42, "severity": "Medium" },
+        { "year": 2040, "risk": 47, "severity": "Medium" },
+        { "year": 2050, "risk": 52, "severity": "High" }
+      ],
+      "explanation": "Suitable location with stable rainfall patterns and manageable flood risk. Groundwater depletion rate is moderate. Water treatment facility can operate efficiently with proposed conservation measures.",
+      "recommendations": [
+        "Proceed with development - Location is suitable",
+        "Implement modern water treatment and purification systems",
+        "Establish groundwater monitoring network",
+        "Build retention ponds for monsoon water capture",
+        "Maintain regular environmental audits"
+      ],
+      "alternativeLocations": [
+        {
+          "name": "Coastal Tamil Nadu Site",
+          "latitude": 12.9716,
+          "longitude": 80.1988,
+          "riskScore": 38,
+          "feasibility": "Feasible"
+        }
+      ]
+    }
+  },
+  "mapLocations": {
+    "offices": [
+      {
+        "id": "OFF001",
+        "name": "Head Office",
+        "latitude": 28.6139,
+        "longitude": 77.209,
+        "type": "office",
+        "description": "Main corporate office"
+      },
+      {
+        "id": "OFF002",
+        "name": "Mumbai Branch",
+        "latitude": 19.0760,
+        "longitude": 72.8777,
+        "type": "office",
+        "description": "Western region office"
+      },
+      {
+        "id": "OFF003",
+        "name": "Chennai Branch",
+        "latitude": 13.0827,
+        "longitude": 80.2707,
+        "type": "office",
+        "description": "Southern region office"
+      }
+    ],
+    "industries": [
+      {
+        "id": "IND001",
+        "name": "Tech Water Corp",
+        "latitude": 28.6139,
+        "longitude": 77.209,
+        "type": "industry",
+        "description": "Manufacturing facility"
+      },
+      {
+        "id": "IND002",
+        "name": "Agri Fresh Industries",
+        "latitude": 19.0760,
+        "longitude": 72.8777,
+        "type": "industry",
+        "description": "Agricultural processing"
+      },
+      {
+        "id": "IND003",
+        "name": "Eco Hydro Ltd",
+        "latitude": 13.0827,
+        "longitude": 80.2707,
+        "type": "industry",
+        "description": "Water treatment facility"
+      }
+    ],
+    "projects": [
+      {
+        "id": "PROJ001",
+        "name": "TechWaterCorp Plant",
+        "latitude": 28.6139,
+        "longitude": 77.209,
+        "type": "project",
+        "description": "Manufacturing | New Delhi"
+      },
+      {
+        "id": "PROJ002",
+        "name": "AgriFresh Cluster",
+        "latitude": 19.076,
+        "longitude": 72.8777,
+        "type": "project",
+        "description": "Agriculture | Mumbai"
+      },
+      {
+        "id": "PROJ003",
+        "name": "EcoHydro Facility",
+        "latitude": 13.0827,
+        "longitude": 80.2707,
+        "type": "project",
+        "description": "Water Treatment | Chennai"
+      }
+    ]
+  }
+}

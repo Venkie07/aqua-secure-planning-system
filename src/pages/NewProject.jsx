@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import Sidebar from '../components/Sidebar';
-import Button from '../components/Button';
-import Card from '../components/Card';
-import Input from '../components/Input';
+import Navbar from '../components/common/Navbar';
+import Sidebar from '../components/common/Sidebar';
+import Button from '../components/common/Button';
+import Card from '../components/common/Card';
+import Input from '../components/common/Input';
 import { saveProjectToLocalStorage } from '../utils/auth';
 
 const NewProject = () => {
@@ -59,20 +59,20 @@ const NewProject = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-dark">
+    <div className="min-h-screen   text-slate-900">
       <Navbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <div className="pt-24 px-4 pb-8">
+      <div className="pt-20 sm:pt-24 px-4 sm:px-6 md:px-10 lg:px-20 pb-8 sm:pb-12">
         <div className="max-w-2xl mx-auto">
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold text-white mb-2">Create New Project</h2>
-            <p className="text-gray-400">Enter project details to analyze water risk</p>
+          <div className="mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-2">Create New Project</h2>
+            <p className="text-sm sm:text-base text-slate-600">Enter project details to analyze water risk</p>
           </div>
 
-          <Card className="max-w-2xl">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card>
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <Input
                   label="Company Name"
                   type="text"
@@ -104,10 +104,10 @@ const NewProject = () => {
                 required
               />
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {/* Company Type */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-slate-700 mb-2">
                     Company Type
                   </label>
                   <select
@@ -128,7 +128,7 @@ const NewProject = () => {
 
                 {/* Construction Type */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-slate-700 mb-2">
                     Construction Type
                   </label>
                   <select
@@ -146,7 +146,7 @@ const NewProject = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {/* Latitude */}
                 <Input
                   label="Latitude"
@@ -172,7 +172,7 @@ const NewProject = () => {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {/* Water Requirement */}
                 <Input
                   label="Water Requirement (m³/day)"
@@ -196,11 +196,11 @@ const NewProject = () => {
                 />
               </div>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Button
                   type="submit"
                   variant="primary"
-                  className="flex-1"
+                  className="flex-1 text-sm sm:text-base"
                   disabled={loading}
                 >
                   {loading ? 'Analyzing...' : 'Analyze & Predict'}
@@ -208,15 +208,15 @@ const NewProject = () => {
                 <Button
                   type="button"
                   variant="secondary"
-                  className="flex-1"
+                  className="flex-1 text-sm sm:text-base"
                   onClick={() => navigate('/dashboard')}
                 >
                   Cancel
                 </Button>
               </div>
 
-              <div className="p-4 bg-blue-500 bg-opacity-10 border border-blue-400 border-opacity-30 rounded-lg text-sm text-gray-300">
-                <p className="font-semibold mb-2">💡 Tip:</p>
+              <div className="p-3 sm:p-4 bg-blue-50 border border-blue-200 rounded-lg text-xs sm:text-sm text-slate-600">
+                <p className="font-semibold mb-1 sm:mb-2">Tip:</p>
                 <p>Use coordinates from the map on the Dashboard to find the best location for your project.</p>
               </div>
             </form>
