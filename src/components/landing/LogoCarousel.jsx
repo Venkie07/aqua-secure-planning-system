@@ -14,12 +14,12 @@ const LogoCarousel = () => {
 
   // Static 6 images + default text
   const logos = [
-    { image: s1, name: "Service 1", desc: "Smart solution for modern needs" },
-    { image: s2, name: "Service 2", desc: "Efficient and scalable systems" },
-    { image: s3, name: "Service 3", desc: "Innovative tech experience" },
-    { image: s4, name: "Service 4", desc: "Reliable and secure platform" },
-    { image: s5, name: "Service 5", desc: "High performance delivery" },
-    { image: s6, name: "Service 6", desc: "Next-gen digital services" },
+    { image: s1, name: "Water Resource Mapping", desc: "Mapping and analyzing water bodies to understand regional resource distribution." },
+    { image: s2, name: "Flood Risk Assessment", desc: "Identifying flood-prone zones using elevation, slope, and historical data." },
+    { image: s3, name: "Climate Variability Analysis", desc: "Evaluating rainfall trends and climate fluctuations for long-term planning." },
+    { image: s4, name: "Industrial Suitability Scoring", desc: "Scoring locations based on water, risk, and operational feasibility." },
+    { image: s5, name: "Geospatial Intelligence Dashboard", desc: "Interactive GIS platform for real-time spatial insights and decision-making." },
+    { image: s6, name: "AI-Based Recommendation Engine", desc: "AI-powered insights to recommend optimal locations and risk mitigation strategies." },
   ];
 
   // Handle responsive visible count

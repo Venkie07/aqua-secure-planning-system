@@ -320,7 +320,7 @@
   border: 1px solid var(--lp-border-soft);
   background: #fff;
   flex: 1;
-  height: 280px;
+  height: 340px;
 }
 
 .lp-logo-track {
@@ -401,14 +401,16 @@
 .lp-service-card {
   border: 1px solid var(--lp-border-soft);
   border-radius: 0.75rem;
-  padding: 0.9rem;
+  padding: 1.9rem;
   background: #ffffff;
   box-shadow: var(--lp-shadow-md);
   display: grid;
+  height: 350px;
   grid-template-columns: 1fr;
   gap: 0.8rem;
   transition: all 0.3s ease;
 }
+
 
 .lp-service-card:hover {
   box-shadow: var(--lp-shadow-soft);
@@ -767,6 +769,27 @@ body {
     color: #666;
     margin: 2px 0 0;
   }
+
+  .lp-service-card {
+    border: 1px solid var(--lp-border-soft);
+    border-radius: 0.75rem;
+    padding: 0.9rem;
+    background: #ffffff;
+    box-shadow: var(--lp-shadow-md);
+    display: grid;
+    height: 600px;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    transition: all 0.3s ease;
+  }
+
+  .lp-service-card h3 {
+    font-size: 18px;
+  }
+
+  .lp-service-card p {
+    font-size: 15px;
+  }
 }
 
 /* Desktop styles */
@@ -895,8 +918,9 @@ body {
   .lp-service-card {
     grid-template-columns: 200px 1fr;
     border-radius: 1rem;
-    padding: 1.1rem;
+    padding: 4.5rem;
     gap: 1rem;
+
   }
 
   .lp-service-card img {
