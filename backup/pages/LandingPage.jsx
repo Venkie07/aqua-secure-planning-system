@@ -78,7 +78,6 @@ const LandingPage = () => {
         e.key === 'ArrowDown'
           ? Math.min(currentIndex + 1, sections.length - 1)
           : Math.max(currentIndex - 1, 0);
-
       sections[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 

@@ -222,7 +222,7 @@
 .lp-carousel-overlay p {
   margin: 0.5rem 0 0;
   color: #dfe9f7;
-  font-size: 0.75rem;
+  font-size: 1rem;
   max-width: 100%;
 }
 
@@ -323,7 +323,7 @@
 .lp-logo-track {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 97%;
   gap: 0.6rem;
   padding: 0.5rem;
   height: 100%;
@@ -502,7 +502,7 @@
   line-height: 1.7;
   color: var(--lp-text-secondary);
   max-width: 900px;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 }
 
 .lp-footer {
@@ -723,7 +723,7 @@ body {
 
   .lp-carousel-overlay p {
     margin: 0.7rem 0 0;
-    font-size: 0.95rem;
+    font-size: 1.15rem;
     max-width: 640px;
   }
 
@@ -773,7 +773,7 @@ body {
 
   .lp-footer {
     border-radius: 1rem;
-    padding: 2.2rem 1.2rem;
+    padding: 1.2rem 2.2rem;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.2rem;
   }

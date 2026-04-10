@@ -1,5 +1,6 @@
 :root {
-  --app-font-scale: 1;
+  --app-base-font-size: 16px;
+  --app-font-scale: 1.2;
   --app-space-section: 3rem;
 
   --lp-bg-page: #6c8efd;

@@ -1,5 +1,5 @@
 html {
-  font-size: 17px;
+  font-size: calc(var(--app-base-font-size) * var(--app-font-scale));
 }
 
 body {
@@ -7,24 +7,24 @@ body {
   min-height: 100vh;
   color: var(--lp-text-primary);
   font-family: 'Space Grotesk', sans-serif;
-  font-size: calc(1rem * var(--app-font-scale));
+  font-size: 1rem;
   line-height: 1.6;
 }
 
 h1 {
-  font-size: calc(2.5rem * var(--app-font-scale));
+  font-size: 1.5rem;
 }
 
 h2 {
-  font-size: calc(2rem * var(--app-font-scale));
+  font-size: 2rem;
 }
 
 h3 {
-  font-size: calc(1.5rem * var(--app-font-scale));
+  font-size: 1.5rem;
 }
 
 p {
-  font-size: calc(1.05rem * var(--app-font-scale));
+  font-size: 3.05rem;
 }
 
 section {

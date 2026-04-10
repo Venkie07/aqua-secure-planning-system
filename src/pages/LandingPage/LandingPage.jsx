@@ -14,12 +14,23 @@ const techList = [
   { name: 'AI/ML', icon: '🧠' },
 ];
 
+const getInitialFontScale = () => {
+  if (typeof window === 'undefined') {
+    return 1;
+  }
+
+  const rootStyles = getComputedStyle(document.documentElement);
+  const cssValue = parseFloat(rootStyles.getPropertyValue('--app-font-scale'));
+
+  return Number.isFinite(cssValue) ? cssValue : 1;
+};
+
 const LandingPage = () => {
   const navigate = useNavigate();
   const loggedIn = isAuthenticated();
   const [theme, setTheme] = useState('light');
-  const [fontScale, setFontScale] = useState(1);
-  const baseFontSizePx = 17;
+  const [fontScale, setFontScale] = useState(getInitialFontScale);
+  const [isFontCustomized, setIsFontCustomized] = useState(false);
 
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll('.lp-section'));
@@ -86,12 +97,21 @@ const LandingPage = () => {
   }, [theme]);
 
   useEffect(() => {
-    document.documentElement.style.fontSize = `${baseFontSizePx * fontScale}px`;
+    const root = document.documentElement;
 
-    return () => {
-      document.documentElement.style.fontSize = `${baseFontSizePx}px`;
-    };
-  }, [fontScale]);
+    if (!isFontCustomized) {
+      // Keep CSS as the source of truth for the initial default size.
+      root.style.removeProperty('--app-font-scale');
+
+      const cssValue = parseFloat(getComputedStyle(root).getPropertyValue('--app-font-scale'));
+      if (Number.isFinite(cssValue) && cssValue !== fontScale) {
+        setFontScale(cssValue);
+      }
+      return;
+    }
+
+    root.style.setProperty('--app-font-scale', `${fontScale}`);
+  }, [fontScale, isFontCustomized]);
 
   const openAspsPlatform = () => {
     if (loggedIn) {
@@ -102,10 +122,12 @@ const LandingPage = () => {
   };
 
   const increaseFont = () => {
-    setFontScale((prev) => Math.min(prev + 0.05, 1.25));
+    setIsFontCustomized(true);
+    setFontScale((prev) => Math.min(prev + 0.05, 3));
   };
 
   const decreaseFont = () => {
+    setIsFontCustomized(true);
     setFontScale((prev) => Math.max(prev - 0.05, 0.85));
   };
 

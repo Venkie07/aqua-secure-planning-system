@@ -177,8 +177,8 @@
 .lp-carousel {
   position: relative;
   overflow: hidden;
-  border-radius: 0;
-  box-shadow: none;
+  border-radius: 2rem;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
   background: #ffffff;
 }
 
@@ -194,12 +194,15 @@
   flex-shrink: 0;
   position: relative;
   height: 300px;
+  overflow: hidden;
+
 }
 
 .lp-carousel-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .lp-carousel-overlay {
@@ -222,7 +225,7 @@
 .lp-carousel-overlay p {
   margin: 0.5rem 0 0;
   color: #dfe9f7;
-  font-size: 0.75rem;
+  font-size: 1rem;
   max-width: 100%;
 }
 
@@ -286,7 +289,7 @@
 
 .lp-overline {
   margin: 0;
-  font-size: 0.75rem;
+  font-size: 1.75rem;
   letter-spacing: 0.12rem;
   color: var(--lp-text-muted);
   font-weight: 700;
@@ -317,13 +320,13 @@
   border: 1px solid var(--lp-border-soft);
   background: #fff;
   flex: 1;
-  height:280px;
+  height: 280px;
 }
 
 .lp-logo-track {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 98%;
   gap: 0.6rem;
   padding: 0.5rem;
   height: 100%;
@@ -349,6 +352,10 @@
   border-color: var(--lp-accent);
 }
 
+.lp-logo-card p {
+  font-size: 20px;
+}
+
 .lp-logo-card img {
   max-height: 150px;
   object-fit: contain;
@@ -360,13 +367,13 @@
 }
 
 .lp-logo-footer h4 {
-  font-size: 14px;
+  font-size: 20px;
   margin: 0;
   font-weight: 600;
 }
 
 .lp-logo-footer p {
-  font-size: 12px;
+  font-size: 16px;
   color: #666;
   margin: 2px 0 0;
 }
@@ -481,11 +488,19 @@
 .lp-tech-card {
   background: #ffffff;
   border-radius: 0.7rem;
-  border: 1px solid var(--lp-border-soft);
-  padding: 0.8rem;
-  box-shadow: var(--lp-shadow-md);
+  border: 0 solid var(--lp-border-soft);
+  padding: 0.5rem;
+
   transition: all 0.3s ease;
   text-align: center;
+  height: 200px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 .lp-tech-card:hover {
@@ -494,20 +509,20 @@
 }
 
 .lp-tech-icon {
-  font-size: 1.3rem;
+  font-size: 2.3rem;
 }
 
 .lp-about p {
   margin: 0;
   line-height: 1.7;
   color: var(--lp-text-secondary);
-  max-width: 900px;
-  font-size: 0.9rem;
+  max-width: 1500px;
+  font-size: 1.5rem;
 }
 
 .lp-footer {
   max-width: 1080px;
-  margin:0.5rem auto;
+  margin: 0.5rem auto;
   background: #ffffff;
   border-top: 1px solid var(--lp-border-soft);
   border-radius: 0.75rem 0.75rem 0 0;
@@ -712,6 +727,46 @@ body {
   .lp-logo-card {
     flex: 0 0 100%;
   }
+
+  .lp-preview-item {
+    display: none;
+    border-radius: 0.6rem;
+    background: #ffffff;
+    border: 1px solid var(--lp-border-soft);
+    padding: 0.75rem;
+    font-weight: 600;
+    color: var(--lp-accent-dark);
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .lp-about p {
+    margin: 0;
+    line-height: 1.7;
+    color: var(--lp-text-secondary);
+    max-width: 900px;
+    font-size: 0.9rem;
+  }
+
+  .lp-overline {
+    margin: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.12rem;
+    color: var(--lp-text-muted);
+    font-weight: 700;
+  }
+
+  .lp-logo-footer h4 {
+    font-size: 14px;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .lp-logo-footer p {
+    font-size: 11px;
+    color: #666;
+    margin: 2px 0 0;
+  }
 }
 
 /* Desktop styles */
@@ -798,7 +853,7 @@ body {
 
   .lp-carousel-slide {
     height: 700px;
-    border-radius:10px;
+    border-radius: 10px;
   }
 
   .lp-carousel-overlay {
@@ -811,7 +866,7 @@ body {
 
   .lp-carousel-overlay p {
     margin: 0.7rem 0 0;
-    font-size: 0.95rem;
+    font-size: 1.15rem;
     max-width: 640px;
   }
 
@@ -861,7 +916,7 @@ body {
 
   .lp-footer {
     border-radius: 1rem;
-    padding: 2.2rem 1.2rem;
+    padding: 1.2rem 4.2rem;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.2rem;
   }
@@ -871,6 +926,6 @@ body {
   }
 
   .lp-footer p {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
 }
