@@ -133,15 +133,7 @@ const LandingPage = () => {
 
   return (
     <div className="company-site">
-      <button
-        type="button"
-        className="lp-theme-fab"
-        onClick={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))}
-        aria-label={theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
-        title={theme === 'light' ? 'Dark mode' : 'Light mode'}
-      >
-        {theme === 'light' ? '◐' : '◑'}
-      </button>
+
 
       <LandingNavbar />
 
@@ -175,10 +167,10 @@ const LandingPage = () => {
           <div className="lp-section-head">
             <h2>SERVICES</h2>
             <p className="lp-overline">Consulting and implementation services</p>
-            
+
           </div>
 
-            <LogoCarousel />
+          <LogoCarousel />
 
         </section>
 
@@ -240,7 +232,18 @@ const LandingPage = () => {
             <button type="button" className="lp-tool-btn" onClick={increaseFont}>A+</button>
             <button type="button" className="lp-tool-btn" onClick={decreaseFont}>A-</button>
           </div>
-          <p className="lp-font-indicator">Current: {Math.round(fontScale * 100)}%</p>
+          <h3>Theme:</h3>
+          <div className="lp-font-controls" role="group" aria-label="Font size controls">
+            <button
+              type="button"
+              className="lp-tool-btn"
+              onClick={() => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))}
+              aria-label={theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
+              title={theme === 'light' ? 'Dark mode' : 'Light mode'}
+            >
+              {theme === 'light' ? '◐' : '◑'}
+            </button>
+          </div>
         </div>
         <p className="lp-copyright">© 2026 Aqua Secure Planning System. All rights reserved.</p>
       </footer>
